@@ -28,46 +28,95 @@ class _TimeLinePageState extends State<TimeLinePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the TimeLinePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+        body: Center(
+        child: ListView(
+        children: List.generate(10, (index) {
+      return InkWell(
+        onTap: () {},
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            ListTile(
+              title: Row(
+                children: <Widget>[
+                  Text("Index ユーザー $index"),
+                  SizedBox(
+                    width: 70.0,
+                  ),
+                  Text(
+                    "8時間前",
+                    style: TextStyle(fontSize: 13.0, color: Colors.grey),
+                  )
+                ],
+              ),
+              leading: Image.asset(
+                "iamges/icon$index.png",
+                width: 30.0,
+                height: 30.0,
+              ),
+              subtitle: Container(
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 5.0,
+                    ),
+                    Text("こんにちはTwitterへ！！\nこちらはTwitterのクローンを作成しています"),
+                    SizedBox(
+                      height: 5.0,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.comment,
+                          size: 15.0,
+                          color: Colors.grey,
+                        ),
+                        Text(index.toString()),
+                        SizedBox(
+                          width: 30.0,
+                        ),
+                        Icon(
+                          Icons.repeat,
+                          size: 15.0,
+                          color: Colors.grey,
+                        ),
+                        Text(index.toString()),
+                        SizedBox(
+                          width: 30.0,
+                        ),
+                        Icon(
+                          Icons.favorite,
+                          size: 15.0,
+                          color: Colors.grey,
+                        ),
+                        Text(index.toString()),
+                        SizedBox(
+                          width: 30.0,
+                        ),
+                        Icon(
+                          Icons.share,
+                          size: 15.0,
+                          color: Colors.grey,
+                        ),
+                        Text(index.toString()),
+                        SizedBox(
+                          width: 30.0,
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            SizedBox(
+              height: 20.0,
+            ),
+            Divider(
+              height: 5.0,
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+      );
+    })),
+    ),);
   }
 }
